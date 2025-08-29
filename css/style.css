@@ -1,0 +1,185 @@
+
+
+/* border-box обьедияет бордеры и падинги чтобы они не прибавлялись к контенту */
+html{
+    box-sizing: border-box;
+}
+/* Устанавливаем box-sizing для всех элементов box-sizing: inherit; → означает, что элемент берёт значение box-sizing у своего родителя. */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Устанавливаем стили для ссылок */
+a {
+    color: inherit; /* Наследуем цвет от родителя */
+    text-decoration: none;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none; /* Убираем маркеры списка */
+}
+h1, h2, h3, p {
+    margin: 0; /* Убираем отступы у заголовков и параграфов */
+}
+
+.visually-hidden { /* Класс для скрытия элементов, но оставления их доступными для скринридеров */
+    position: absolute; /* Элемент удаляется из потока и не занимает места на странице */
+    width: 1px; /* Ширина 1 пиксель */
+    height: 1px; /* Высота 1 пиксель */
+    margin: -1px; /* Отрицательный внешний отступ */
+    clip: rect(0, 0, 0, 0); /* Обрезаем элемент до нулевого размера */
+}
+
+body {
+    margin: 0;                 /* ← важно: убираем дефолтный отступ */
+   font-size: 16px;
+   line-height: 1.3; /* Межстрочный интервал по всему макету определяется делением auto line height на 16px размер шрифта*/
+   font-weight: 600; /* Толщина шрифта semibold constant value*/
+   font-family: 'Rethink Sans', sans-serif;
+   font-style: normal; /* Нормальный шрифт без наклона подкд */
+   color: #2B2A29; /* все черные элементы по всему макету */
+    
+}
+.container {
+    max-width: 1740px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрируем контейнер */
+    padding: 0 90px; /* Отступы по бокам */
+}
+.header{
+    background-image: url(../images/bg.png);
+    background-repeat: no-repeat  ; 
+    background-position: top center; 
+    min-height: 100vh; /* Минимальная высота шапки равна высоте экрана */
+    padding-bottom: 80px;
+}
+.title-img {
+    max-width: 100%; /* Ограничивает максимальную ширину картинки рамками родителя.     Если у родителя, например, ширина 1740px, то изображение никогда не будет шире этого значения.*/
+    height: auto; /* Высота картинки подстраивается пропорционально к ширине. без сплющиваний */
+    display: block; /* По умолчанию <img> — inline-element (как текст). Это даёт лишние «щели»/отступы снизу (подстрочный интервал).
+                     block превращает картинку в блочный элемент → она занимает всю строку и «щель» снизу пропадает.
+                     Плюс можно нормально управлять отступами через margin. */
+    margin-bottom: 15px; /* Отступ снизу */
+
+}
+
+.header__top {
+    padding: 50px 0 90px; /* Отступы сверху по бокам и снизу */
+    display: flex; /* Используем flexbox для выравнивания элементов по горизонтали */
+    justify-content: space-between; /* Распределяем элементы с равными отступами между ними по бокам*/    
+    align-items: center; /* Выравниваем элементы по вертикали по центру */     
+    font-size: 20px; /* Размер шрифта + для всех наследуемых элементов*/
+    font-weight: 700; /* Толщина шрифта bold constant value*/   
+}
+.menu__list {
+    display: flex; /* Используем flexbox для выравнивания элементов по горизонтали */
+    color: #0A507A; /* Цвет текста */
+    gap: 40px; /* Расстояние между элементами меню */
+}
+
+.header__phone{
+    /* Чтобы выровнить телефон относительно цифр:*/
+    display: flex; /* Используем flexbox для выравнивания элементов по горизонтали */
+    align-items: center; /* Выравниваем элементы по вертикали по центру */
+    gap: 10px; /* Расстояние между иконкой и номером телефона */
+
+    background-color: #0A507A;
+    padding: 10px    20px;
+    border-radius: 30px; /* Скругление углов */
+
+    color: #fff;
+}
+.title-text {
+    color: #fff;
+    font-size: 20px; /* Размер шрифта */
+    border-radius: 30px; /* Скругление углов */
+    background-color: #2B2A29;
+    padding: 10px 20px;
+    display: inline-block; /* Чтобы отступы padding работали корректно чтобы картинка не была на всю длину страницы а по размеру кнопки */
+}
+
+.header__content {
+    display: flex; /* Используем flexbox для выравнивания элементов по горизонтали */
+    justify-content: space-between; /* Распределяем элементы с равными отступами между ними по бокам в пределах контейнера в котором они находится*/    
+}
+.header__info {
+    display: flex; 
+    flex-direction: column; 
+    gap: 118px; 
+    margin-top: auto; /* Отодвигаем инфо вниз */
+}
+.header__social{
+    margin-top: auto; /* Отодвигаем соц.сети вниз */
+}
+
+.header__info-list {
+    display: flex;
+    gap: 18px 10px; /* Расстояние между иконками сбоку и снизу */
+    flex-wrap: wrap; /* Позволяет элементам переноситься на следующую строку, если они не помещаются в одну */
+    max-width: 495px; /* Максимальная ширина блока с иконками и текстом */
+}
+.header__info-item {
+    padding: 10px 20px; 
+    color: #0A507A;
+    border-radius: 30px; 
+    border: 1px solid #0A507A;
+    font-size: 26px;
+    font-weight: 700;
+}
+.header__social-list {
+    display: flex; /* Используем flexbox для выравнивания элементов по горизонтали */
+    gap: 20px; /* Расстояние между иконками */
+}
+
+.header__news {
+  display: flex;
+    flex-direction: column; /* Располагаем элементы вертикально */
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.header__news-box {
+    display: flex;
+    flex-direction: column; /* Располагаем элементы вертикально */
+    padding: 50px 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Белый фон с прозрачностью */
+    margin-bottom: 103px;
+    max-width: 392px; 
+    max-height: 535px;
+    
+}
+
+.header__news-title, .header__news-time {
+  font-size: 32px;
+  font-weight: 800;
+}
+.header__news-time {
+    margin-bottom: 10px;;
+}
+.header__news-link {
+   text-decoration: underline;
+   margin-bottom : 30px;
+   font-weight: 800;
+   align-self: flex-start; /* Выравниваем ссылку по левому краю внутри flex-контейнера */
+}
+.header__buttons {
+    display: flex; /* Используем flexbox для выравнивания элементов по горизонтали */
+    gap: 20px; /* Расстояние между кнопками */
+}
+.header__buttons a{
+    font-size: 32px;
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 30px;
+}
+.header__buttons-book {
+    background-color: #2B2A29;
+    color: #fff;
+}
+.header__buttons-activities {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #2B2A29;
+    border: 1px solid #2B2A29;
+}
